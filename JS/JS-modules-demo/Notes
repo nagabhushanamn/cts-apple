@@ -1,0 +1,19 @@
+
+
+
+ popular JS modules standards
+ -----------------------------
+ 
+ 
+ 1. AMD ( Async Module Definition )
+ 2. CommonJS
+ 
+ ---------------------------------
+ 
+ 
+ AMD spec/API
+ 
+   define('mid',[],factory);  ---> to define/create new-module
+   require(config,[],callback) --> to load module
+   
+ -------------------------------------  

@@ -1,0 +1,23 @@
+{
+  "name": "shop",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "nagabhushanamn <nagabhushanamn@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular-resource": "^1.5.7",
+    "angular-ui-router": "^0.3.1",
+    "angular-sanitize": "^1.5.7"
+  }
+}

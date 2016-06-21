@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>App</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container">
+
+	<hr/>
+	
+	<div id="box1" class="jumbotron">
+	
+			
+		Name : <input data-bind="value:name">
+		       <button class="btn btn-primary" data-bind="click:resetName">Reset</button>
+		       <button class="btn btn-primary" data-bind="click:getName">Get name</button>
+		
+		<hr/>
+		Hello : <span data-bind="text:name"></span>
+	       
+	
+	</div>
+	
+	<div id="box2" class="jumbotron">
+	
+			
+		Name : <input data-bind="value:name">
+		       <button class="btn btn-primary" data-bind="click:resetName">Reset</button>
+		       <button class="btn btn-primary" data-bind="click:getName">Get name</button>
+		
+		<hr/>
+		Hello : <span data-bind="text:name"></span>
+	       
+	
+	</div>
+	
+	<script type="text/javascript" src="js/lib/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="js/lib/knockout-3.4.0.js"></script>	
+	<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>

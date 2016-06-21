@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - service comp</div>
+	
+	<div ng-controller="HitController" class="well">
+		<button class="btn btn-danger" ng-click="doHit()">Hit-1</button>
+		<span class="badge">{{count}}</span>
+	</div>
+	<div ng-controller="HitController" class="well">
+		<button class="btn btn-danger" ng-click="doHit()">Hit-2</button>
+		<span class="badge">{{count}}</span>
+	</div>
+	<div ng-controller="KickController" class="well">
+		<button class="btn btn-danger" ng-click="doKick()">Kick-1</button>
+		<span class="badge">{{count}}</span>
+	</div>
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		
+		var mod = angular.module('demo', []);
+		
+		mod.config(function(trainer) {
+			//console.log(trainer.name);
+			trainer.name="New Nag";
+		});
+		
+		//-------------------------------------------------
+
+		mod.controller('HitController', function($scope,counterService,trainer) {
+			console.log('New HitController instance created..');
+			$scope.count = counterService.getCount();
+			$scope.doHit = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+				trainer.doWork();
+			}
+		});
+		
+		mod.controller('KickController', function($scope,counterService) {
+			console.log('New KickController instance created..');
+			$scope.count = counterService.getCount();
+			$scope.doKick = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+			}
+		});
+		
+		//----------------------------------------------------
+		
+		var counter={
+				count:0,
+				doCount:function(){
+					this.count++;
+				},
+				getCount:function(){
+					return this.count;
+				}
+		};
+		
+		var person={
+				name:'Nag',
+				doWork:function(){
+					console.log(this.name+'Teaching NG');
+				}
+		};
+		
+		//----------------------------------------------------
+		
+		mod.value('counterService',counter);
+		mod.constant('trainer',person);
+		
+		mod.constant('Auth-Token', 'sdsf56787sdfs7f7s6fsfs6f');
+		
+	</script>
+</body>
+</html>

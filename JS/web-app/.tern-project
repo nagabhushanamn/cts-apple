@@ -1,0 +1,19 @@
+{
+  "plugins": {
+    "outline": {
+      
+    },
+    "node": {
+      
+    },
+    "browser-extension": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "ecma6",
+    "browser"
+  ],
+  "ecmaVersion": 6
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 10px;
+margin: 5px;
+}
+</style>	
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - custom-events</div>
+	
+	<span class="badge">{{count}}</span>
+	
+	<div ng-controller="HitController">
+		<span class="badge">{{count}}</span>
+		<div ng-controller="KickController">
+			<button class="btn btn-primary" ng-click="doKick()">Kick</button>
+			<span class="badge">{{count}}</span>
+		</div>
+		<div ng-controller="SlapController">
+			<span class="badge">{{count}}</span>
+		</div>
+		
+	
+	</div>
+	
+	
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		
+		var mod = angular.module('demo', []);
+		
+		mod.run(function($rootScope) {
+			$rootScope.$on('count-event',function(event,data){
+				console.log('$rootScope - listening count-event');
+				//$rootScope.count=data.count;
+			});
+		});
+
+		mod.controller('HitController', function($scope) {
+			$scope.$on('count-event',function(event,data){
+			//	console.log('HitController - listening count-event');
+				//console.dir(event);
+				//console.dir(data);
+			//	$scope.count=data.count;
+			//	event.stopPropagation();
+			});
+		});
+		
+		mod.controller('KickController', function($scope) {
+			$scope.count=1;
+			$scope.doKick=function(){
+				$scope.count++;
+				//$scope.$emit('count-event',{count:$scope.count});
+				$scope.$parent.$broadcast('count-event',{count:$scope.count});
+			}; 
+		});
+		
+		mod.controller('SlapController', function($scope) {
+			$scope.$on('count-event',function(event,data){
+				console.log('SlapController - listening count-event');
+				$scope.count=data.count;
+			});
+		});
+		
+		
+	</script>
+</body>
+</html>

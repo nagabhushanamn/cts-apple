@@ -1,0 +1,27 @@
+<!-- View -->
+<div ng-controller="StoreController as sc" class="list-group">
+
+	<div ng-show="message">
+		{{message.status}}-{{message.statusText}}
+	</div>
+
+	<div ng-hide="product.notAvailable" 
+	     data-ng-repeat="product in products | limitTo:10:0" class="list-group-item">
+	   
+	   <div class="row">
+	   			
+		   	<div class="col-sm-2">
+		   		<img alt="product-image" ng-src="{{product.images[0].thumb}}" class="img-responsive">
+		   	</div>
+		   	<div class="col-sm-7 col-sm-offset-1">
+			   	<product-title></product-title>
+			   	<hr/>
+			   	<product-tabs></product-tabs>
+		   	</div>
+	   	
+	   </div>
+	   
+	</div>
+	
+
+</div>

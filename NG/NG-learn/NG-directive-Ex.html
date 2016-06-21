@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - directive Ex</div>
+
+	<div my-controller>
+
+		<div my-init="tab=3" my-other="i=2;">
+
+			<div my-panel style="padding: 10px">
+				<button class='btn btn-primary' ng-click='sayName()'>Say Name</button> 
+				bla bla bla
+			</div>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.directive('myController', function() {
+			return {
+				priority: 100,
+				controller : function($scope) {
+					console.log('myController:controller()');
+					$scope.name = 'Nag';
+					this.sayName = function() {
+						console.log('im ' + $scope.name);
+					}
+				}
+			};
+		});
+
+		mod.directive('myInit', function() {
+			return {
+				restrict : "A",
+				scope : false,
+				compile : function() {
+					return {
+						pre : function(scope, element, attrs) {
+							console.log('myInit:preLink()');
+							scope.$eval(attrs.myInit);
+						}
+					};
+				}
+			};
+		});
+
+		mod.directive('myPanel', function() {
+			return {
+				restrict : "EA",
+				scope : false,
+				transclude: true,
+				require: "^myController",
+				template : "<div><div ng-transclude></div> <hr/> {{message}} <hr/> </div>",
+				compile : function(element, attr) {
+					console.log('myPanel:compile()');
+					element.addClass('panel panel-default');
+					return {
+						post : function(scope, element, attr,controller) {
+							console.log('myPanel:postLink()');
+							scope.message = "tab: " + scope.tab;
+							scope.sayName=controller.sayName;
+						}
+					};
+				}
+
+			};
+		});
+	</script>
+</body>
+</html>

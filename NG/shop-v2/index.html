@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>shop</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div ng-app="store">
+
+		<div class="page-header">shopIT</div>
+
+		<!-- View -->
+		<div ng-controller="StoreController as sc" class="list-group">
+
+			<div ng-hide="product.notAvailable" 
+			     ng-repeat="product in products | limitTo:10:0" class="list-group-item">
+			   
+			   <div class="row">
+			   
+				   	<div class="col-sm-2">
+				   		<img alt="product-image" ng-src="{{product.images[0].thumb}}" class="img-responsive">
+				   	</div>
+				   	<div class="col-sm-7 col-sm-offset-1">
+					   	<span class="badge">{{$index+1}}</span>
+						<h4>{{product.name|uppercase}} <small>{{product.make|date:'yyyy'}}</small> </h4>
+						<h5>{{product.price|priceDiscount:product.discount:10:20|currency:'&#8377;':2}}</h5>
+						<button class="btn btn-primary" ng-show="product.canBuy">Add to cart</button>
+					   	<hr/>
+					   	<section ng-init="tab=1">
+					   		<ul class="nav nav-tabs">
+					   			<li ng-class="{active:tab===1}"><a href ng-click="tab=1">Description</a></li>
+					   			<li ng-class="{active:tab===2}"><a href ng-click="tab=2">Specification</a></li>
+					   			<li ng-class="{active:tab===3}"><a href ng-click="tab=3">Reviews</a></li>
+					   		</ul>
+					   		<div class="panel" ng-show="tab===1">
+					   			<div class="panel-body">
+					   				{{product.desc}}
+					   			</div>
+					   		</div>
+					   		<div class="panel" ng-show="tab===2">
+					   			<div class="panel-body">
+					   				Not Yet
+					   			</div>
+					   		</div>
+					   		<div class="panel" ng-show="tab===3">
+					   			<div class="panel-body">
+					   				None yet
+					   			</div>
+					   		</div>
+					   		
+					   	</section>
+					   	
+				   	</div>
+			   	
+			   </div>
+			   
+			</div>
+			
+
+		</div>
+
+	</div>
+
+
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>

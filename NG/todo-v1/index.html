@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>todo-app</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body>
+
+
+	<section class="container" ng-app="todo">
+		
+		<h2>My todos</h2>
+		
+		<div ng-controller="TodoController">
+		
+		  <!-- Todos input -->
+		  <form role="form" ng-submit="addTodo()">
+		    <div class="row">
+		      <div class="input-group">
+		        <input type="text" ng-model="todoTitle" placeholder="What needs to be done?" class="form-control">
+		        <span class="input-group-btn">
+		          <input type="submit" class="btn btn-primary" value="Add">
+		        </span>
+		      </div>
+		    </div>
+		  </form>
+		  <hr/>	
+		  <!-- Todos list -->
+		 <p class="input-group" ng-repeat="todo in todos">
+		  <input type="text" ng-model="todo.title" class="form-control">
+		  <span class="input-group-btn">
+		    <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
+		  </span>
+		 </p>
+		</div>
+		
+	</section>
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

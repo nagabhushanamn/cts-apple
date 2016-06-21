@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - 2-way data-binding _Ex</div>
+
+
+	<div ng-controller="UserController">
+		
+		<select ng-options="n for n in [5,10,15,20,25]" ng-model="userCount"></select>
+		<input ng-model="userCount">
+		<table class="table table-bordered table-condensed">
+			<tr ng-repeat="user in users">
+				<td><input ng-model="user.fname"></td>
+				<td>{{user.lname}}</td>
+			</tr>
+		</table>
+	
+	</div>
+	
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.controller('UserController', function($scope,$http) {
+			
+			$scope.userCount=10;
+			
+			$scope.$watch('userCount', function(newCount,oldCount) {
+				loadUsers(newCount);
+			});
+			
+			$scope.$watch('users',function(newArr,oldArr){
+				console.log('users modified...');
+			},true);
+			
+			function loadUsers(count){
+				$http.jsonp("http://www.filltext.com/?callback=JSON_CALLBACK&rows="+count+"&fname={firstName}&lname={lastName}")
+			    .success(function (data) {
+			        $scope.users = data
+			    });
+			}
+			
+		});
+	</script>
+
+</body>
+</html>

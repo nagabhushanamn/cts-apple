@@ -1,0 +1,86 @@
+
+
+
+ how NG doing 2-way data-binding ?
+ 
+ NG-life=cycle
+ ---------------
+  
+  
+   -->  for every model property in scope(s) ,
+        angular will register 'watchers' functions which are read/write model when it becomes dirty.
+     
+   -->  all watchers are executed by 'digest-loop' provided by F.W. 
+   
+   -->  we can also resister  custom watchers also for model properties.
+   
+   
+   ========================================================
+   
+   NG - components
+   --------------
+   
+   --> controller     
+   
+   	   -> to apply data&behav thru ViewModel to View-Templates
+   
+   --> filter
+   
+       -> to filter model property either in HTML-template or in NG-components
+   
+   --> directives
+   
+       -> to bring any func to element declarativly.
+       -> template based directives , will act as UI comp to HTML page
+   
+   --> service(s)
+   
+       imp features
+       
+       -> singletons.
+       -> lazy instantiation.
+       -> injectable components
+       
+       
+       why we need ?
+       
+       to have common business logic for entire angular-appln.
+       
+       e.g
+       
+       -> communicating with Server-Side.
+       -> routing
+       -> security
+       -> exception handling..
+       -> using HTML5 APIs
+       etc...
+   ------------------------------------------
+   
+   
+   
+   Provider  will provide 'service' comp with factory-func 
+   
+   
+   -------------------------------------------------
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

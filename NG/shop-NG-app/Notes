@@ -1,0 +1,33 @@
+
+
+ server-side App - shop
+ -----------------------
+
+ REST API
+ ---------
+
+ Product
+ Review
+
+1. Identification of resources
+
+/products
+/products/{id}/reviews
+
+2. Manipulation of resources through these representations
+
+  JSON
+
+ HTTP verbs
+
+ GET,HEAD  --> read
+ POST      --> create new resource
+ PUT       --> create / update resource
+ DELETE    
+ OPTIONS
+
+ 3. Self-descriptive messages ( headers )
+
+ 4. Hypermedia as the engine of application state (HATEOAS)
+
+   

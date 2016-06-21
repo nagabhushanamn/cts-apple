@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<link href="node_modules/jquery-ui/jquery-ui.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - datepicker</div>
+	
+	<input ng-model="myDate" my-date-picker>
+	<hr/>
+	selected date : {{myDate}}
+	
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="node_modules/jquery-ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		
+		var mod = angular.module('demo', []);
+		
+		mod.directive('myDatePicker', function(){
+			return{
+				link:function(scope,ele,attr){
+					
+					ele.datepicker({
+						showOn : "button",
+						buttonImageOnly : true,
+						buttonText : 'select-date',
+						onSelect: function(date) {
+						}
+					});
+				}
+			};
+		});
+	</script>
+</body>
+</html>

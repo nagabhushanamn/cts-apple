@@ -1,0 +1,124 @@
+
+
+
+JS intro
+--------
+
+--> scripting lang for web-pages in browser-envi.
++
+--> server-side pgmming lang on NodeJS
+--> to dev command-line tools
+--> stand-alone appln.
+--> mobile appln
+
+JS Features
+------------
+
+--> functional programming lang
+--> object oriented lang
+
+--> it supports dynamic data-types.
+--> it supports 'closures'
+
+--> 'single-threaded lang'
+--> it supports concurrency.
+
+------------------------------------
+
+---> JS lang is based on 'ECMAScript' spec.
+
+   latest : ECMAScript 2015 or ES6
+   
+------------------------------------------
+
+how to execute JS programs ?
+
+we need 'JS engine'
+
+by default every browser has their own 'JS engine'
+
+e.g
+
+  chrome  --> 'v8' engine ( c++  )
+  firfox  --> rhino       ( java )
+  IE      --> chakra
+  safari  --> nitro
+  
+ non browser envi
+ 
+ e.g
+ 
+ NodeJS  --> v8 
+ Apache CouchDB
+ JVM --> nashorn
+ 
+ ---------------------------------------------
+ 
+ 
+ 
+  JS learn
+  ------------
+  
+  
+  JS - data-structure / data-types
+ ---------------------------------
+ 
+ 
+  a. simple / primitives
+    
+     1. string
+     2. number
+     3. boolean
+     4. undefined
+     5. null
+     
+     6. symbol  ( from es6 )
+     
+  b. complex / objects / reference
+ 
+ 
+ ----------------------------------
+ 
+ 
+ when loading initial-script , JS engine
+ 
+ --> will create 'Global Execution Context'
+ 
+     'window'
+     this --> window
+ 
+ 
+ 	all global var(s)/function(s) are assigned as properties of 'global' ob
+ 	
+    ----------------------------------
+ 
+    Execution Context - 2 steps
+    
+    
+     --> creation phase
+     
+         all variables/funcs in that context 'hoisted' ( lifting to top ) with default
+         value ( undefined )
+         
+     --> execution
+    
+    
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     

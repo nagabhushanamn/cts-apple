@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 5px;
+margin: 5px;
+}
+</style>	
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - directive lifecycle</div>
+
+	<div dir1></div>
+
+
+	<hr />
+
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		mod.directive('dir1', function() {
+			return {
+				scope:false,
+				template : "<div> <span class=badge>dir1 - name : {{name}}</span> <div dir2></div> </div>",
+				compile : function(tElement, tAttrs) {
+					console.log('dir1:compile()');
+					//console.dir(tElement);
+					tElement.addClass('well');
+					return {
+						pre : function(scope,iElement,tAttrs) {
+							console.log('dir1:preLink()');
+							//scope.name="Nag";
+						},
+						post : function(scope,iElement,tAttrs) {
+							console.log('dir1:postLink()');
+							//scope.name="Nag";
+							
+							iElement.on('mouseenter',function(){
+								iElement.css('background-color','#def');
+							});
+							iElement.on('mouseleave',function(){
+								iElement.css('background-color','#fff');
+							});
+							iElement.on('mouseover',function(){
+								iElement.css('cursor','pointer');
+							});
+							
+						}
+					};
+				},
+				controller : function($scope) {
+					console.log('dir1:controller()');
+					this.name='Nag';
+					$scope.name=this.name;
+					this.sayName=function(){
+						console.log('im '+this.name);
+					}
+				}
+			};
+		});
+
+		//---------------------------------------------
+		
+		mod.directive('dir2', function() {
+			return {
+				scope:false,
+				require:'^dir1',
+				template : "<div> <span class=badge>dir2 - {{message}}</span> </div>",
+				compile : function(tElement, tAttrs) {
+					console.log('dir2:compile()');
+					//console.dir(tElement);
+					tElement.addClass('well');
+					return {
+						pre : function() {
+							console.log('dir2:preLink()');
+						},
+						post : function(scope,iElement,tAttrs,controller) {
+							console.log('dir2:postLink()');
+							var name=scope.name;
+							scope.message="my dad is "+name; 
+							controller.sayName();
+						}
+					};
+				},
+				controller : function($scope) {
+					console.log('dir2:controller()');
+				}
+			};
+		});
+		
+		// short-hand syntax to create directive
+		
+		mod.directive('someDirective', function(){
+			return {
+				controller:function(){},
+				link:function(){
+					
+				}
+			};
+		});
+		
+		
+		
+	</script>
+</body>
+</html>

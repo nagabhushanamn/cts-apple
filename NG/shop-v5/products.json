@@ -1,0 +1,76 @@
+[
+	{
+		"id": 1344,
+		"name": "Laptop",
+		"price": 198000,
+		"desc": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"make": 1465472588779,
+		"images": 
+		[
+			{
+				"thumb": "images/Laptop.png",
+				"full": ""
+			},
+
+			{
+				"thumb": "images/Laptop.png",
+				"full": ""
+			}
+		],
+
+		"reviews": 
+		[
+			{
+				"stars": 5,
+				"comment": "good...",
+				"author": "nag@gmail.com"
+			},
+
+			{
+				"stars": 3,
+				"comment": "too costly...",
+				"author": "indu@gmail.com"
+			}
+		]
+	},
+
+	{
+		"id": 3424,
+		"name": "Mobile",
+		"price": 19000,
+		"desc": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"make": 1465472588779,
+		"discount": 5000,
+		"images": 
+		[
+			{
+				"thumb": "images/Mobile.png",
+				"full": ""
+			},
+
+			{
+				"thumb": "images/Mobile.png",
+				"full": ""
+			}
+		],
+
+		"reviews": 
+		[
+			{
+				"stars": 5,
+				"comment": "good...",
+				"author": "nag@gmail.com"
+			},
+
+			{
+				"stars": 3,
+				"comment": "too costly...",
+				"author": "indu@gmail.com"
+			}
+		]
+	}
+]

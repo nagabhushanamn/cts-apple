@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5-Form</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">HTML5 - form</div>
+	<div class="col-sm-6">
+		
+		<form name="userForm">
+			<div class="form-group">
+				<label>Email:</label>
+				<input type="email" class="form-control" placeholder="Email" autofocus>
+			</div>
+			<div class="form-group">
+				<label>UserName:</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Age:</label>
+				<input type="number" class="form-control">
+			</div>
+				<div class="form-group">
+				<label>Gender:</label>
+				<select class="form-control">
+					<option value="#">SELECT</option>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+			</div>
+				<div class="form-group">
+				<label>DOB:</label>
+				<input type="date" class="form-control">
+			</div>
+				<div class="form-group">
+				<label>Time:</label>
+				<input type="time" class="form-control">
+			</div>
+				<div class="form-group">
+				<label>Date-Time:</label>
+				<input type="datetime-local" class="form-control">
+			</div>
+				<div class="form-group">
+				<label>Mobile:</label>
+				<input type="tel" class="form-control" pattern="\d{10}">
+			</div>
+				<div class="form-group">
+				<label>URL:</label>
+				<input type="url" class="form-control" pattern="\d{10}">
+			</div>
+			<div>
+				<div class="form-group">
+				<label>Range:</label>
+				<input type="range" min="" pattern="\d{10}">
+			</div>
+			</div>
+			<div class="form-group">
+				<label>Fav Lang:</label>
+				<input type="text" class="form-control" list="langs">
+				<datalist id="langs">
+					<option>Java</option>
+					<option>JavaScript</option>
+					<option>Angular</option>
+				</datalist>
+			</div>
+			<button type="submit" class="btn btn-primary" formaction="save" formmethod="post">submit</button>
+			<button type="submit" class="btn btn-primary" formaction="cancel" formmethod="get">cancel</button>
+		</form>
+		
+		<input type="hidden" value="1234" form="userForm">
+		
+	</div>
+
+</body>
+</html>

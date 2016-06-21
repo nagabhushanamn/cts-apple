@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>bootstrap</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<!-- style -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	 <nav class="navbar navbar-inverse navbar-static-top no-margin no-padding" role="navigation">
+	 	<div class="container-fluid">
+	 	<div class="navbar-header">
+	 		<a class="navbar-brand" href="#">Bootstrap</a>
+	 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+	 	</div>	
+	 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	 		<ul class="nav navbar-nav navbar-right">
+	 			<li><a href="index.html">Home</a></li>
+	 			<li><a href="blog.html">Blog</a></li>
+	 			<li><a href="contact.html">Contact</a></li>
+	 			<li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">Action</a></li>
+		            <li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">Separated link</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">One more separated link</a></li>
+	 			</ul>
+	 			</li>
+	 		</ul>
+	 	</div>
+	 	</div>
+	 </nav>
+	 
+	 
+	 
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col-md-5">
+			<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">Contact Address</h4>
+			</div>
+				<div class="panel-body">
+					<address>
+					<strong>Bootstrap</strong>
+				 	#999 street, <br/>  city, <br/> country.
+				 	</address>
+			</div>
+			
+			</div>
+			</div>
+			<div class="col-md-7">
+			
+			<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">Contact Form</h4>
+			</div>
+				<div class="panel-body">
+				
+				<form method="get" id="contactForm" action="" role="form">
+				 <div class="form-group has-feedback">
+				    <label for="contactName">Name</label>
+				    <input type="text" class="form-control" id="contactName" placeholder="Enter Name">
+				  </div>
+				  <div class="form-group">
+				    <label for="contactEmail">Email</label>
+				    <input type="email" class="form-control" id="contactEmail" placeholder="Enter email">
+				  </div>
+				  <div class="form-group">
+				    <label for="contactSubject">Subject</label>
+				    <input type="text" class="form-control" id="contactSubject" placeholder="Enter email">
+				  </div>
+				  <div class="form-group">
+				    <label for="contactMessage">Message</label>
+				    <textarea class="form-control" rows="6"  id="contactMessage"></textarea>
+				  </div>
+				  <button type="button" id="contactBtn" class="btn btn-default">Submit</button>
+				</form>
+				
+				</div>
+				</div>
+			
+			</div>
+		</div>
+		</div>	
+	
+	
+		<!-- 	 Start of footer -->
+
+            <footer class="site-footer">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-5"> 
+                <h5>Contact Address</h5>
+                <address>
+                #999 street, <br/>  city, <br/> country.
+                </address>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="col-md-5">&copy; 2015 </div>
+                <div class="col-md-7">
+                    <ul class="footer-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                        <li><a href="Link.html">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            </footer>
+
+            <!-- 	End of Footer -->
+	
+	
+
+	<!-- 	jQuery -->
+	<script src="js/jquery-2.2.0.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		
+		function validateText(id){
+			if($('#'+id).val()==null || $('#'+id).val()==""){
+				//console.log("Validation Error");
+				var div=$("#"+id).closest("div");
+				div.removeClass('has-success');
+				$("#glypcn"+id).remove();
+				div.addClass("has-error has-feedback");
+				div.append('<span id="glypcn'+id+'" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>')
+				return false;
+			}else{
+				var div=$("#"+id).closest("div");
+				div.addClass("has-success has-feedback");
+				$("#glypcn"+id).remove();
+				div.append('<span id="glypcn'+id+'" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>')
+				div.removeClass("has-error");
+				return true;
+			} 
+		}
+	
+		$(document).ready(function(){
+			$("#contactBtn").click(function() {
+				
+				if(!validateText("contactName")){
+					return false;
+				}
+				if(!validateText("contactEmail")){
+					return false;
+				}
+				if(!validateText("contactSubject")){
+					return false;
+				}
+				if(!validateText("contactMessage")){
+					return false;
+				}
+				
+				$("form#contactForm").submit()
+			});
+		});
+	
+	</script>
+
+</body>
+</html>

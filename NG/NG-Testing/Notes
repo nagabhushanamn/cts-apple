@@ -1,0 +1,36 @@
+
+
+ Dev - Testing
+ --------------
+ 
+ 
+ UnitTesting
+ 
+   some popular Testing F.W for javascript 
+   
+   -> jasmine  ( our focus )
+   -> mocha with chai and sinon
+   -> qunit ( jquery team )
+   -> nodeunit
+   -> etc....
+   
+   TDD vs BDD
+   
+   ---------------------------
+   
+   e.g
+   
+   
+      App- Angular - calculator
+      
+      module(s) :- calc-module
+      
+     			  component-class : CalculatorController
+   
+   
+   -------------------------------
+   
+   
+   
+   
+   

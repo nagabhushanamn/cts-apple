@@ -1,0 +1,107 @@
+
+
+what JS lang can do n HTML-page in browser ?
+
+
+   JS programs using 'Web APIs', will bring any dynamic func to web-page.
+
+   Web APIs --> DOM , XHR , Timer , etc...
+   
+   all Web APIs are implemented by browsers based on w3c standards.
+   
+   Web APIs abstracts 'JS objects '
+
+
+	using DOM API
+	---------------
+	
+  --> can create/retreive/update/delete HTML elements
+  --> can change element's style.
+  --> can change element's attribute values.
+  --> can change element's text content.
+  --> can handle event's on HTML elements.
+  --> can create rich UI-components.
+  
+  
+  using XHR API
+  ----------------
+  
+  --> can communicate with server async , update result in existing page ( AJAX )
+  
+  HTML-5 APIs
+  -------------
+  
+  a. canvas API
+  
+  
+  --> drawing effects
+  
+  b. Audio/Video support API
+  
+  c.  storage API
+   
+      sessionStorage
+      localStorage
+      IndexedDB
+      OfflineSupport
+   
+   d. WebWorker API
+   
+   e. Geo API
+   
+   f. WebSockets
+   
+   g. Web GL
+   
+   etc...
+   
+   ------------------------------
+   
+   
+   JS-lang
+   
+   --> single-threaded lang
+   --> supports concurrent
+   --> Non-blocking
+   
+   -----------------------------
+   
+   
+   e.g   chrome-browser
+   
+         a. JS Engine ( v8 )
+         
+             call-stack
+             heap
+             
+         b. Web APIs  ( DOM , XHR , etc .. )
+         
+         c. callback/message queue
+         
+         d. Event-Loop
+         
+     ------------------------------
+     
+     
+     single-threaded lang --> one call-stack --> one thing
+     
+     -----------------------------        
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+  
+  

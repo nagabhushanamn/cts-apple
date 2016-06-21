@@ -1,0 +1,12 @@
+
+
+
+  $()  vs $
+ ---------------- 
+  
+  $()  --> to select DOM elements 
+  $    --> to call any jquery utility func
+  
+  ---------------------------------
+  
+  

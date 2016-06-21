@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 15px;
+	margin: 10px;
+}
+</style>
+</head>
+<body class="container">
+
+	<div class="page-header">NG - scope(s)</div>
+
+	<div ng-app="demo">
+
+		<span class="badge">{{color}}</span>
+		<button class="btn btn-primary" ng-click="changeColor()">change-color</button>
+
+		<div ng-controller="ColorController">
+			<span class="badge">{{color}}</span>
+			<button class="btn btn-primary" ng-click="changeColor()">change-color</button>
+
+			<div ng-controller="AnotherController">
+				<span class="badge">{{color}}</span>
+			</div>
+
+		</div>
+
+		<div ng-controller="ColorController">
+			<span class="badge">{{color}}</span>
+			<button class="btn btn-primary" ng-click="changeColor()">change-color</button>
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.run(function($rootScope) {
+			$rootScope.color = 'red'
+			$rootScope.changeColor = function() {
+				console.log('changing ...$rootScope.color');
+				$rootScope.color = 'green';
+			}
+		});
+
+		mod.controller('ColorController', function($scope, $rootScope) {
+			console.log('New ColorController instance created...');
+			$scope.color = "yellow";
+			$scope.changeColor = function() {
+				$scope.color = "blue";
+				$scope.$parent.color = "new red";
+			}
+		});
+
+		mod.controller('AnotherController', function($scope) {
+			console.log('New AnotherController instance created...');
+		});
+	</script>
+
+</body>
+</html>

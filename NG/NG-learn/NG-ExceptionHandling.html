@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - Exception Handling</div>
+
+
+	<div ng-if="e" class="well">
+		{{e|json}}
+	</div>
+	
+	<div ng-controller="SomeController">
+	
+	</div>
+
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		mod.config(function($provide) {
+			$provide.decorator("$exceptionHandler", function($delegate,$injector) {
+				return function(exception) {
+					var $rootScope = $injector.get("$rootScope");
+					$rootScope.addError({
+						message : "Exception",
+						reason : exception.message
+					});
+					//$delegate(exception);
+				};
+			});
+		});
+		mod.run(function($rootScope){
+			$rootScope.addError=function(e){
+				$rootScope.e=e;
+			}
+		});
+		
+		mod.controller('SomeController',function(someService){
+			//throw new Error('SomeError');
+			someService.doWork();
+		});
+		
+		mod.factory('someService',function(){
+			return{
+				doWork:function(){
+					throw new Error('Work Error');
+				}
+			};
+		});
+		
+	</script>
+</body>
+</html>

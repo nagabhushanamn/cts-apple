@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - bindonce</div>
+
+	<div ng-repeat="n in [42, 42, 43, 43] track by $index">
+  		{{n}}
+	</div>
+	
+	<div ng-controller="UserController">
+	<div ng-repeat="user in users">
+  		{{user.name}} {{}}
+	</div>
+	</div>	
+	
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+			
+			mod.controller('UserController', function($scope,$rootScope,$timeout) {
+			
+			$scope.users=[];
+			$scope.users.push({name:'Nag',age:32});
+			$scope.users.push({name:'Nag',age:32});
+			
+		});
+	</script>
+
+</body>
+</html>

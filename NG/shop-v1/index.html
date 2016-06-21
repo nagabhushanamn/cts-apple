@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>shop</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div ng-app="store">
+
+		<div class="page-header">shopIT</div>
+
+		<div ng-controller="StoreController as sc">
+		
+			<!-- View -->
+			<div>
+				<h4>{{sc.product.name}}</h4>
+				<h5>{{sc.product.price}}</h5>
+				<p>{{sc.product.desc}}</p>
+			</div>
+		
+		</div>
+
+
+	</div>
+
+
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>

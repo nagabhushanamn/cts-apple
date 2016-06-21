@@ -1,0 +1,13 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongods": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "shopITv1",
+    "name": "mongods",
+    "connector": "mongodb"
+  }
+}

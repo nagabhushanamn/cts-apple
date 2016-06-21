@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5-Form</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG Form Validation</div>
+	
+	<div class="col-sm-6" ng-controller="UserFormController">
+		
+		<form name="userForm" 
+		      ng-submit="doSave()" 
+		      novalidate>
+		
+			<div class="form-group" 
+			     ng-class="{
+			     'has-error':(userForm.email.$error.required || userForm.email.$error.email)&&userForm.email.$dirty,
+			     'has-success':userForm.email.$valid
+			     }">
+				<label>Email:</label>
+				<input type="email" 
+				       class="form-control" 
+				       placeholder="Email" 
+				       autofocus
+				       required
+				       name="email"
+				       autocomplete="off"
+				       ng-model="user.email">
+				  <p class="help-block" ng-show="userForm.email.$error.required&&userForm.email.$dirty">
+				  	Email is Required
+				  </p> 
+				  <p class="help-block" ng-show="userForm.email.$error.email&&userForm.email.$dirty">
+				  	Invalid Email
+				  </p>     
+			</div>
+			
+			<div class="form-group">
+				<label>UserName:</label>
+				<input type="text" 
+				       class="form-control"
+				       ng-model="user.userName">
+			</div>
+			
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" 
+				       class="form-control"
+				       ng-model="user.password">
+			</div>
+			
+			<div class="form-group">
+				<label>Age:</label>
+				<input type="number" 
+				       class="form-control"
+					   required		
+				       min="18"
+				       max="64"
+				       name="age"
+				       ng-model="user.age">
+			</div>
+			
+			<div class="form-group">
+				<label>Gender:</label>
+				<select class="form-control" ng-model="user.gender">
+					<option value="#">SELECT</option>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label>Mobile:</label>
+				<input type="tel" 
+				       class="form-control"
+				       required
+				       pattern="\d{10}" 
+				       name="mobile"
+				       ng-model="user.mobile">
+			</div>
+				
+			<button type="submit" class="btn btn-primary">submit</button>
+			
+			<pre>
+				{{userForm|json}}
+			</pre>
+			
+		</form>
+
+	</div>
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+	var mod=angular.module('demo', []);
+	mod.controller('UserFormController', function($scope) {
+		$scope.user={};
+		$scope.doSave=function(){
+			console.log($scope.user);
+		};
+	});
+	</script>
+
+</body>
+</html>

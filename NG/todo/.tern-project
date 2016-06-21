@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "outline": {
+      
+    },
+    "node": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "ecma6",
+    "underscore"
+  ],
+  "ecmaVersion": 6
+}

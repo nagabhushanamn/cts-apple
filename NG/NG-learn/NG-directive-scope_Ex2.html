@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 15px;
+	margin: 5px;
+}
+</style>
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - directive scope _ Ex1 ( child scope )</div>
+	
+	<div ng-controller="ColorController">
+		<input ng-model="color">
+		<hr/>
+		
+		<!-- <hello-world my-color="grey"></hello-world> -->
+		<div hello-world="{'my-color':'grey'}"></div>
+		<hr/>
+		<div hello-world></div>
+		
+	</div>
+
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.controller('ColorController', function($scope) {
+			$scope.color = 'yellow';
+		});
+
+		mod.directive('helloWorld', function() {
+			return {
+				restrict : "AECM",
+				replace : false,
+				scope: true,
+				templateUrl: "templates/hello-world.html",
+				link:function(scope,iElement,iAttrs){
+					
+					//console.log('post-link function called..');
+					//console.log(scope.color);
+					//scope.color="red";
+					
+					//console.dir(iElement);
+					iElement.on('mouseover',function(e){
+						iElement.css('cursor','pointer');
+					});
+					iElement.on('click',function(e){
+						console.log('changing bg color');
+						//iElement.find('div').css('background-color','#fff');
+						scope.color='white'
+						scope.$digest();
+					});
+					
+					/*
+					if(iAttrs.myColor){
+						scope.color=iAttrs.myColor;
+					}
+					*/
+					if(iAttrs.helloWorld){
+						scope.color=scope.$eval(iAttrs.helloWorld)['my-color']
+					}
+					
+				}
+			};
+		});
+		
+	</script>
+</body>
+</html>

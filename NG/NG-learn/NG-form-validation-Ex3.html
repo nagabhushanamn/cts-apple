@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5-Form</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG Form Validation</div>
+	
+	<div class="col-sm-6" ng-controller="UserFormController">
+		
+		<form name="userForm" 
+		      ng-submit="userForm.$valid&&doSave()" 
+		      ng-submit-force="true"
+		      novalidate>
+		
+			<div class="form-group">
+				<label>Email:</label>
+				<input type="email" 
+				       class="form-control" 
+				       placeholder="Email" 
+				       autofocus
+				       required
+				       name="email"
+				       autocomplete="off"
+				       ng-model="user.email">
+			</div>
+			
+			<div class="form-group">
+				<label>UserName:</label>
+				<input type="text" 
+				       name="uname"
+				       class="form-control"
+				       required
+				       ng-minlength="3"
+            		   ng-maxlength="10"
+				       ng-model="user.userName">
+			</div>
+			
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" 
+					   required
+				       class="form-control"
+				       ng-model="user.password">
+			</div>
+			
+			<div class="form-group">
+				<label>Age:</label>
+				<input type="number" 
+				       class="form-control"
+					   required		
+				       min="18"
+				       max="64"
+				       name="age"
+				       ng-model="user.age"
+				       min-err-type="tooYoung">
+			</div>
+			
+			<div class="form-group">
+				<label>Gender:</label>
+				<select class="form-control" ng-model="user.gender" required>
+					<option value="#">SELECT</option>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label>Mobile:</label>
+				<input type="tel" 
+				       required
+				       class="form-control"
+				       required
+				       pattern="\d{10}" 
+				       name="mobile"
+				       ng-model="user.mobile"
+				       pattern-err-type="invalidMobile">
+			</div>
+				
+			<button type="submit" class="btn btn-primary">submit</button>
+			<button type="reset" class="btn btn-primary">Reset</button>
+			
+		</form>
+		
+		<pre>
+		{{userForm|json}}
+		</pre>
+
+	</div>
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="node_modules/angular-auto-validate/dist/jcs-auto-validate.js"></script>
+	
+	<script type="text/javascript">
+	var mod=angular.module('demo', ['jcs-autoValidate']);
+	
+	mod.run(function (bootstrap3ElementModifier,defaultErrorMessageResolver) {
+	              
+        	 bootstrap3ElementModifier.enableValidationStateIcons(true);
+        	 defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
+                 errorMessages['invalidMobile'] = 'Please enter valid mobile';
+                 errorMessages['tooYoung'] = 'hello kid! you need to be {0}, to access our services';
+              });
+        	 
+	       });
+	
+	mod.controller('UserFormController', function($scope) {
+		$scope.user={};
+		$scope.doSave=function(){
+			console.log($scope.user);
+			$scope.user={};
+			$scope.userForm.$setPristine(true);
+		};
+	});
+	</script>
+
+</body>
+</html>

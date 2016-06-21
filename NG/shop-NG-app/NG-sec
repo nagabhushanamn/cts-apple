@@ -1,0 +1,147 @@
+
+
+Typical Risks in the Web-Stack
+
+
+Server
+
+   - Insifficient access control
+   - SQL injection
+
+Network
+
+   - DNS hijacking
+   - Man in the Middle attack   
+
+Browser
+
+   - Cross site request forgery  ( CSR )
+   - Cross site scripting ( XSS )
+
+-----------------------------------------
+
+Defending the Stack
+
+
+Server
+
+    - Authentication and Authorization
+    - Parameterization of SQL queries    
+
+NetWork
+
+    - VPN
+    - Transport layer protection (TLS) 
+
+Browser
+
+    - Native browser defenses
+    - HTTP only cookies
+
+--------------------------------------------
+
+What can you actually Control ?
+
+---------------------
+|                   |
+|  Browser          |
+|                   |
+|  Network          |
+|--------------------            
+|                   |
+| Server            |
+|--------------------
+
+always assume the Client is Compromized
+
+------------------------------------------
+
+
+
+Security Controls on the Server
+
+
+  - authentication and authorization
+
+
+----------------------------------------
+
+Understanding Page-lifecycles
+
+
+1.Traditional Website Requests
+
+(browser)
+
+----------->  page-1
+----------->  page-2
+----------->  page-3
+
+
+2.Requests in an AngularJS App
+
+
+------------> page + angular
+
+------------> templates + JSON
+------------> templates + JSON
+
+
+-----------------------------------------
+
+
+Authentication and Identity Persistence
+
+
+ awesomeplaces.troyhunt.com
+
+
+----------------------------------------
+
+
+Cookies vs Tokens
+
+Cookies
+
+       - they're implicit-they're auto-sent
+         with every request to the domain 
+       - They pose a CSRF risk because of this
+       - They dont work for domains they're
+         not valid for
+       - They persist when the DOM is unloaded
+
+Tokens
+
+      - They're explicit-they have 
+        to be added to the request-header
+      - No CSRF risk because of this
+      - They can be sent to any domain
+      - They need to be coded to persist on
+        DOM-unload
+
+
+They're both extremely sensitive
+
+---------------------------------------------        
+
+common security flaws on the client-side
+
+
+ -> Understanding DOM mainipilation and
+   the risks in source code
+
+ -> How the client lib encode output
+
+ -> Risks exposed via cookie attributes
+
+ -> CSRF in client frameworks
+
+ ------------------------------------
+
+
+DOM ( Document Object Model )
+
+
+
+
+

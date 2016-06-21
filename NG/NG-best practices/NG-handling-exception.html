@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG - Handling Exception</div>
+	<div class="well">{{e|json}}</div>
+	<div ng-controller="StoreController as sc">
+		<h2>{{sc.item.name}}</h2>
+		
+		<button ng-click="sc.buy()" class="btn btn-default">buy</button>
+	</div>
+	
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.run(function($rootScope){
+			$rootScope.handleError=function(e){
+				//
+				$rootScope.e=e;
+			};
+		});
+		mod.config(function($provide) {
+			$provide.decorator("$exceptionHandler",function($injector,$delegate){
+				return function(exception){
+					var $rootScope = $injector.get("$rootScope");
+					$rootScope.handleError({
+						message : "Exception",
+						reason : exception.message
+					});
+					$delegate(exception);
+				}
+			});
+		});
+		var item={
+				name:'Laptop',
+				price:12000,
+				desc:'New Model'
+		};
+		mod.controller('StoreController', function($scope) {
+			this.item=item;
+			this.buy=function(){
+				console.log('buying...');
+				throw new Error('cant buy this product');
+			}			
+		});
+	</script>
+
+</body>
+</html>

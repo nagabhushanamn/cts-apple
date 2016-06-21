@@ -1,0 +1,46 @@
+<div class="container">
+
+  <!-- Todos input -->
+  <form role="form" ng-submit="addTodo()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="title" placeholder="What needs to be done?" class="form-control">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+    </div>
+  </form>
+
+    <!-- Todos list -->
+  <div ui-sortable ng-model="todos" class="list-group">
+	  <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;" >
+	    <span class="input-group-addon">
+	    	<input class="toggle" 
+	    	       type="checkbox" 
+	    	       ng-model="todo.completed" ng-change="toggleCompleted(todo)">
+	    </span>
+	    <input type="text" ng-model="todo.title" 
+	                       ng-disabled="todo.completed"
+	                       ng-blur="update(todo)" ng class="form-control">
+	    <span class="input-group-btn">
+	      <button class="btn btn-danger" ng-click="removeTodo(todo.id)" aria-label="Remove">X</button>
+	    </span>
+	  </p>
+  </div>
+ 
+  <ul class="nav nav-pills">
+  	<li ng-class="{active:status==='all'}"><a href="#/all">All</a></li>
+  	<li ng-class="{active:status==='active'}"><a href="#/active">Active</a></li>
+  	<li ng-class="{active:status==='completed'}"><a href="#/completed">Completed</a></li>
+  	<li><a><ng-pluralize count="todosLeft" 
+  	                     when="{
+  	                     '0':'No Items Left',
+  	                     '1':'One Item Left',
+  	                     'other':' {{todosLeft}} Items Left'
+  	                     }">
+  	        </ng-pluralize></span> </a></li>
+  </ul>
+    
+    
+</div>
